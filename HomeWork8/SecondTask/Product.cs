@@ -3,62 +3,62 @@ namespace HomeWork8.SecondTask
 {
     public abstract class Product
     {
-        public string Name { get; set; }
-        public double Price { get; set; }
-        public DateTime ProductionDate { get; set; }
-        public int ExpirationDate {  get; set; }
+        public string _name;
+        public double _price;
+        public DateTime _productionDate;
+        public int _expirationDate;
     }
 
     public class Goods: Product, IworkingWithData
     {
        public Goods(string name, double price, DateTime productionDate, int expirationDate)
         {
-            Name = name;
-            Price = price;
-            ProductionDate = productionDate;
-            ExpirationDate = expirationDate;
+            _name = name;
+            _price = price;
+            _productionDate = productionDate;
+            _expirationDate = expirationDate;
 
         }
 
         public bool CheckingExpirationDate()
         {   
-            TimeSpan timeSpan = (DateTime.Today - ProductionDate);
+            TimeSpan timeSpan = (DateTime.Today - _productionDate);
             int day = timeSpan.Days;
-            return day <= ExpirationDate;
+            return day <= _expirationDate;
         }
 
         public void GetInfo()
         {
-            Console.WriteLine($"Name: {Name}, Price: {Price}, Prod date: {ProductionDate}, Exp date: {ExpirationDate}\n");
+            Console.WriteLine($"Name: {_name}, Price: {_price}, Prod date: {_productionDate}, Exp date: {_expirationDate}\n");
         }
 
     }
 
     public class Batch: Product, IworkingWithData
     {
-        public int Quantity { get; set; }
-        public Goods _goods { get; set; }
+        public int _quantity;
+        public Goods _goods;
 
         public Batch(Goods goods,int quantity)
         {
-            Quantity = quantity;
+            _quantity = quantity;
             _goods = goods;
-            Name = _goods.Name;
-            Price = _goods.Price;
-            ProductionDate = _goods.ProductionDate;
-            ExpirationDate = _goods.ExpirationDate;
+            _name = _goods._name;
+            _price = _goods._price;
+            _productionDate = _goods._productionDate;
+            _expirationDate = _goods._expirationDate;
         }
 
         public bool CheckingExpirationDate()
         {
-            TimeSpan timeSpan = (DateTime.Today - ProductionDate);
+            TimeSpan timeSpan = (DateTime.Today - _productionDate);
             int day = timeSpan.Days;
-            return day <= ExpirationDate;
+            return day <= _expirationDate;
         }
 
         public void GetInfo()
         {
-            Console.WriteLine($"Name: {Name}, Qan: {Quantity}, Price of all {Quantity * Price}\n");
+            Console.WriteLine($"Name: {_name}, Qan: {_quantity}, Price of all {_quantity * _price}\n");
         }
 
     }
@@ -82,15 +82,15 @@ namespace HomeWork8.SecondTask
 
         public bool[] CheckingExpirationDate()
         {
-            bool[] chek = new bool[_goods.Length];
+            bool[] check = new bool[_goods.Length];
             
-            for(int i = 0; i < chek.Length; i++)
+            for(int i = 0; i < check.Length; i++)
             {
-                chek[i] = _goods[i].CheckingExpirationDate();
-                Console.WriteLine($"{_goods[i].Name}: suitable for eating on {DateTime.Today} - {chek[i]}\n");
+                check[i] = _goods[i].CheckingExpirationDate();
+                Console.WriteLine($"{_goods[i]._name}: suitable for eating on {DateTime.Today} - {check[i]}\n");
             }
 
-            return chek;
+            return check;
         }
     }
 }
