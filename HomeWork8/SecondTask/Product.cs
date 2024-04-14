@@ -29,19 +29,19 @@ namespace HomeWork8.SecondTask
 
         public void GetInfo()
         {
-            Console.WriteLine($"Name: {Name}, Price: {Price}, Prod date: {ProductionDate}, Exp date: {ExpirationDate}");
+            Console.WriteLine($"Name: {Name}, Price: {Price}, Prod date: {ProductionDate}, Exp date: {ExpirationDate}\n");
         }
 
     }
 
     public class Batch: Product, IworkingWithData
     {
-        public int Quntity { get; set; }
+        public int Quantity { get; set; }
         public Goods _goods { get; set; }
 
-        public Batch(Goods goods,int quntity)
+        public Batch(Goods goods,int quantity)
         {
-            Quntity = quntity;
+            Quantity = quantity;
             _goods = goods;
             Name = _goods.Name;
             Price = _goods.Price;
@@ -58,7 +58,7 @@ namespace HomeWork8.SecondTask
 
         public void GetInfo()
         {
-            Console.WriteLine($"Name: {Name}, Qun: {Quntity}, Prise all {Quntity * Price}");
+            Console.WriteLine($"Name: {Name}, Qan: {Quantity}, Price of all {Quantity * Price}\n");
         }
 
     }
@@ -87,7 +87,7 @@ namespace HomeWork8.SecondTask
             for(int i = 0; i < chek.Length; i++)
             {
                 chek[i] = _goods[i].CheckingExpirationDate();
-                Console.WriteLine($"{_goods[i].Name}: suitable for eating on {DateTime.Today} - {chek[i]}");
+                Console.WriteLine($"{_goods[i].Name}: suitable for eating on {DateTime.Today} - {chek[i]}\n");
             }
 
             return chek;
