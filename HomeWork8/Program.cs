@@ -13,10 +13,9 @@ foreach (var fig in figures)
 }
 Console.WriteLine($"Summs of perimeters: {summ}");*/
 
+
 //Second task
-
-
-using HomeWork8.SecondTask;
+/*using HomeWork8.SecondTask;
 
 var goods = new Goods("bread", 2, new DateTime(2024, 04, 10), 3);
 var goods1 = new Goods("beer", 4, new DateTime(2024, 04, 10), 90);
@@ -40,4 +39,16 @@ batch2.GetInfo();
 Console.WriteLine();
 
 pak.GetInfo();
-pak.CheckingExpirationDate();
+pak.CheckingExpirationDate();*/
+
+//Third task
+
+using HomeWork8.ThirdTask;
+using System.Globalization;
+
+
+Main.main();
+
+
+
+
