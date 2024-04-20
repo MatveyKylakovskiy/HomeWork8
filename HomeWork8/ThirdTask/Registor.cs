@@ -25,10 +25,12 @@ namespace HomeWork8.ThirdTask
             }
         }
 
+
         public void GetInfo()
         {
             for(int i = 0; i < registor.Length; i++)
-            {
+            {   
+                
                 registor[i].GetInfo();
             }
         }

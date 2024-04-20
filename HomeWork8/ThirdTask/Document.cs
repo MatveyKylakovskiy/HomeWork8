@@ -19,18 +19,17 @@ namespace HomeWork8.ThirdTask
             get { return _dateOfDoc; }
             set { _dateOfDoc = value; }
         }
-        public virtual void GetInfo()
-        {
 
-        }
+        public abstract void GetInfo();
+        
     }
 
-    public class ProductContract(): Document
+    public class ProductContract: Document
     {
         private string _typeOfProduct;
         private int _quantity;
 
-        public ProductContract(int numberOfDoc, DateTime dateOfDoc, string typeOfProduct, int quantity): this()
+        public ProductContract(int numberOfDoc, DateTime dateOfDoc, string typeOfProduct, int quantity)
         {   
             NumberOfDoc = numberOfDoc;
             DateOfDoc = dateOfDoc;
@@ -38,6 +37,10 @@ namespace HomeWork8.ThirdTask
             _quantity = quantity;
         }
 
+        public ProductContract()
+        {
+
+        }
         public override void GetInfo()
         {
             Console.WriteLine($"Type of Doc: ProductContract, Numb of Doc: {NumberOfDoc}, Date of Doc: {DateOfDoc}, Type Of Prod: {_typeOfProduct}, Quantity: {_quantity}");

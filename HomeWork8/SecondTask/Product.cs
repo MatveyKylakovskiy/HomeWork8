@@ -63,7 +63,7 @@ namespace HomeWork8.SecondTask
 
     }
 
-    public class Package:Product, IworkingWithData
+    public class Package: Product
     {
         public Goods[] _goods { get; set; }
 

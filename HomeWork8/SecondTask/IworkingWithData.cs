@@ -3,13 +3,9 @@ namespace HomeWork8.SecondTask
 {
     public interface IworkingWithData
     {
-        public void GetInfo()
-        {
+        public void GetInfo();
 
-        }
-        public bool CheckingExpirationDate()
-        {
-            return false;
-        }
+        public bool CheckingExpirationDate();
+
     }
 }
