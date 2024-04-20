@@ -7,9 +7,21 @@ namespace HomeWork8.SecondTask
         public double Price { get; set; }
         public DateTime ProductionDate { get; set; }
         public int ExpirationDate { get; set; }
+
+        public virtual bool CheckingExpirationDate()
+        {
+            TimeSpan timeSpan = (DateTime.Today - ProductionDate);
+            int day = timeSpan.Days;
+            return day <= ExpirationDate;
+        }
+
+        public virtual void GetInfo()
+        {
+
+        }
     }
 
-    public class Goods: Product, IworkingWithData
+    public class Goods: Product
     {
        public Goods(string name, double price, DateTime productionDate, int expirationDate)
         {
@@ -22,19 +34,17 @@ namespace HomeWork8.SecondTask
 
         public bool CheckingExpirationDate()
         {   
-            TimeSpan timeSpan = (DateTime.Today - ProductionDate);
-            int day = timeSpan.Days;
-            return day <= ExpirationDate;
+            return base.CheckingExpirationDate();
         }
 
-        public void GetInfo()
+        public override void GetInfo()
         {
             Console.WriteLine($"Name: {Name}, Price: {Price}, Prod date: {ProductionDate}, Exp date: {ExpirationDate}\n");
         }
 
     }
 
-    public class Batch: Product, IworkingWithData
+    public class Batch: Product
     {
         public int Quantity { get; set; }
         public Goods _goods;
@@ -51,12 +61,10 @@ namespace HomeWork8.SecondTask
 
         public bool CheckingExpirationDate()
         {
-            TimeSpan timeSpan = (DateTime.Today - ProductionDate);
-            int day = timeSpan.Days;
-            return day <= ExpirationDate;
+           return base.CheckingExpirationDate();
         }
 
-        public void GetInfo()
+        public override void GetInfo()
         {
             Console.WriteLine($"Name: {Name}, Qan: {Quantity}, Price of all {Quantity * Price}\n");
         }
@@ -72,7 +80,7 @@ namespace HomeWork8.SecondTask
             _goods = goods;
         }
 
-        public void GetInfo()
+        public override void GetInfo()
         {   
             foreach(Goods good in _goods)
             {
@@ -80,7 +88,7 @@ namespace HomeWork8.SecondTask
             }
         }
 
-        public bool[] CheckingExpirationDate()
+        public bool[] CheckingExpirationDateAll()
         {
             bool[] check = new bool[_goods.Length];
             

@@ -39,15 +39,15 @@ batch2.GetInfo();
 Console.WriteLine();
 
 pak.GetInfo();
-pak.CheckingExpirationDate();*/
+pak.CheckingExpirationDateAll();*/
 
 //Third task
 
-using HomeWork8.ThirdTask;
-using System.Globalization;
+/*using HomeWork8.ThirdTask;
+using System.Globalization;*/
 
 
-Main.main();
+//Main.main();
 
 
 
