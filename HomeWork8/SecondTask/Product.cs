@@ -44,7 +44,7 @@ namespace HomeWork8.SecondTask
         }
     }
 
-    public class Goods: Product
+    public class Goods: Product, IComparable
     {
        public Goods(string name, double price, DateTime productionDate, int expirationDate)
         {
@@ -65,6 +65,27 @@ namespace HomeWork8.SecondTask
             Console.WriteLine($"Name: {Name}, Price: {Price}, Prod date: {ProductionDate}, Exp date: {ExpirationDate}\n");
         }
 
+        //
+        public override bool Equals(object? obj)
+        {
+
+            if (obj is Goods prod)
+            {
+                return this.Name == prod.Name;
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode();
+        }
+
+        public int CompareTo(object? o)
+        {
+            if (o is Goods prod) return Name.CompareTo(prod.Name);
+            else throw new ArgumentException("Некорректное значение параметра");
+        }
     }
 
     public class Batch: Product
@@ -90,6 +111,27 @@ namespace HomeWork8.SecondTask
         public override void GetInfo()
         {
             Console.WriteLine($"Name: {Name}, Qan: {Quantity}, Price of all {Quantity * Price}\n");
+        }
+        //
+        public override bool Equals(object? obj)
+        {
+
+            if (obj is Batch prod)
+            {
+                return this.Name == prod.Name;
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode();
+        }
+
+        public int CompareTo(object? o)
+        {
+            if (o is Batch prod) return Name.CompareTo(prod.Name);
+            else throw new ArgumentException("Некорректное значение параметра");
         }
 
     }
@@ -122,6 +164,27 @@ namespace HomeWork8.SecondTask
             }
 
             return check;
+        }
+        //
+        public override bool Equals(object? obj)
+        {
+
+            if (obj is Package prod)
+            {
+                return this.Name == prod.Name;
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode();
+        }
+
+        public int CompareTo(object? o)
+        {
+            if (o is Package prod) return Name.CompareTo(prod.Name);
+            else throw new ArgumentException("Некорректное значение параметра");
         }
     }
 }
