@@ -1,7 +1,9 @@
 ﻿
+using System;
+
 namespace HomeWork8.SecondTask
 {
-    public abstract class Product
+    public abstract class Product: IComparable
     {
         public string Name { get; set; }
         public double Price { get; set; }
@@ -35,6 +37,11 @@ namespace HomeWork8.SecondTask
             return Name.GetHashCode();
         }
 
+        public int CompareTo(object? o)
+        {
+            if (o is Product prod) return Name.CompareTo(prod.Name);
+            else throw new ArgumentException("Некорректное значение параметра");
+        }
     }
 
     public class Goods: Product
