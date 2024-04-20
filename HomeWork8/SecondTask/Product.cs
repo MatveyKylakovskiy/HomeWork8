@@ -19,6 +19,22 @@ namespace HomeWork8.SecondTask
         {
 
         }
+
+        public override bool Equals(object? obj)
+        {
+
+            if (obj is Product prod)
+            {
+                return this.Name == prod.Name;
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode();
+        }
+
     }
 
     public class Goods: Product
