@@ -9,6 +9,7 @@ namespace HomeWork8.SecondTask
         public double Price { get; set; }
         public DateTime ProductionDate { get; set; }
         public int ExpirationDate { get; set; }
+        public int Quantity { get; set; }
 
         public virtual bool CheckingExpirationDate()
         {
@@ -92,7 +93,6 @@ namespace HomeWork8.SecondTask
 
     public class Batch: Product, IComparable
     {
-        public int Quantity { get; set; }
         public Goods _goods;
 
         public Batch(Goods goods,int quantity)
