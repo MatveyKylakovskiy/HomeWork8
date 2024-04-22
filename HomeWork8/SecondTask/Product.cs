@@ -37,10 +37,12 @@ namespace HomeWork8.SecondTask
             return Name.GetHashCode();
         }
 
-        public int CompareTo(object? o)
+        int IComparable.CompareTo(object? obj)
         {
-            if (o is Product prod) return Name.CompareTo(prod.Name);
-            else throw new ArgumentException("Некорректное значение параметра");
+            if ((obj == null) || (!(obj is Product)))
+                return 0;
+            else
+                return string.Compare(Name, ((Product)obj).Name);
         }
     }
 
@@ -81,14 +83,14 @@ namespace HomeWork8.SecondTask
             return Name.GetHashCode();
         }
 
-        public int CompareTo(object? o)
+        int IComparable.CompareTo(object? o)
         {
-            if (o is Goods prod) return Name.CompareTo(prod.Name);
+            if (o is Product prod) return Name.CompareTo(prod.Name);
             else throw new ArgumentException("Некорректное значение параметра");
         }
     }
 
-    public class Batch: Product
+    public class Batch: Product, IComparable
     {
         public int Quantity { get; set; }
         public Goods _goods;
@@ -128,15 +130,15 @@ namespace HomeWork8.SecondTask
             return Name.GetHashCode();
         }
 
-        public int CompareTo(object? o)
+        int IComparable.CompareTo(object? o)
         {
-            if (o is Batch prod) return Name.CompareTo(prod.Name);
+            if (o is Product prod) return Name.CompareTo(prod.Name);
             else throw new ArgumentException("Некорректное значение параметра");
         }
 
     }
 
-    public class Package: Product
+    public class Package: Product, IComparable
     {
         public Goods[] _goods { get; set; }
 
@@ -181,9 +183,9 @@ namespace HomeWork8.SecondTask
             return Name.GetHashCode();
         }
 
-        public int CompareTo(object? o)
+        int IComparable.CompareTo(object? o)
         {
-            if (o is Package prod) return Name.CompareTo(prod.Name);
+            if (o is Product prod) return Name.CompareTo(prod.Name);
             else throw new ArgumentException("Некорректное значение параметра");
         }
     }
